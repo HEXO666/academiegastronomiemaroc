@@ -7,81 +7,46 @@
     <link rel="stylesheet" href="style.css">
 </head>
   <style>
-    /* Style général */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #fdf5e6;
-    color: #333;
-}
-
-/* Conteneur principal */
-.container {
+/* Style pour l'en-tête */
+header {
     text-align: center;
     padding: 20px;
-}
-
-/* Style de l'en-tête */
-header {
     background-color: #c7984f;
-    padding: 20px;
     color: white;
-    border-bottom: 5px solid #a67b40;
 }
 
-header h1 {
-    font-size: 24px;
-    margin: 0;
+/* Titre animé */
+.animated-title {
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    animation: glow 2s infinite alternate;
 }
 
-header p {
-    font-size: 16px;
-    margin: 5px 0 0;
+/* Animation de lueur */
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ffdd94, 0 0 30px #ffc850;
+    }
+    100% {
+        text-shadow: 0 0 10px #ffe4b5, 0 0 15px #ffae42, 0 0 25px #ffd700, 0 0 35px #ffc850;
+    }
 }
 
-/* Style de l'image */
-.profile-image {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    border: 5px solid #a67b40;
-    margin-top: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Texte du profil */
-.profile-text {
-    margin-top: 15px;
+/* Sous-titre */
+.subtitle {
     font-size: 18px;
-    line-height: 1.6;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #fff3e0;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ccc;
+    margin-top: 10px;
+    color: #f4f4f4;
 }
 
   </style>
 <body>
-    <div class="container">
-        <header>
-            <h1>Bienvenue sur le site du Magasin de Gastronomie</h1>
-            <p>(En cours de développement)</p>
-        </header>
+    <header>
+    <h1 class="animated-title">Le magasin de gastronomie marocain</h1>
+    <p class="subtitle">est en cours de développement</p>
+</header>
 
-        <main>
-            <div class="profile">
-                <img src="salah.jpg" alt="Photo de Salah Chakor" class="profile-image">
-                <p class="profile-text">
-                    <strong>Salah Chakor</strong><br>
-                    Expert en Gestion Hôtelière et Tourisme, Conseiller culinaire, Directeur Général de l'entreprise Gestion de Service HRC et Fo.
-                </p>
-            </div>
-        </main>
-    </div>
 </body>
 </html>
