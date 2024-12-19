@@ -1,113 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gastronomy Blog</title>
-  <link rel="stylesheet" href="assets/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magasin de Gastronomie</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<style>
-    /* styles.css */
+  <style>
+    /* Style général */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-  }
-  
-  header {
-    background: #333;
-    color: #fff;
-    padding: 1rem 0;
-  }
-  
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 2rem;
-  }
-  
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-  }
-  
-  nav ul li a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  main {
-    padding: 2rem;
-  }
-  
-  section {
-    margin-bottom: 2rem;
-  }
-  
-  .recipe, article {
-    border: 1px solid #ddd;
-    padding: 1rem;
-    margin: 1rem 0;
-  }
-  
-  footer {
-    background: #333;
-    color: white;
+    font-family: 'Arial', sans-serif;
+    background-color: #fdf5e6;
+    color: #333;
+}
+
+/* Conteneur principal */
+.container {
     text-align: center;
-    padding: 1rem 0;
-  }
-  
-</style>
+    padding: 20px;
+}
+
+/* Style de l'en-tête */
+header {
+    background-color: #c7984f;
+    padding: 20px;
+    color: white;
+    border-bottom: 5px solid #a67b40;
+}
+
+header h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+header p {
+    font-size: 16px;
+    margin: 5px 0 0;
+}
+
+/* Style de l'image */
+.profile-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 5px solid #a67b40;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Texte du profil */
+.profile-text {
+    margin-top: 15px;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff3e0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+}
+
+  </style>
 <body>
-  <header>
-    <nav>
-      <h1>Gastronomy Hub</h1>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#recipes">Recipes</a></li>
-        <li><a href="#articles">Articles</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <div class="container">
+        <header>
+            <h1>Bienvenue sur le site du Magasin de Gastronomie</h1>
+            <p>(En cours de développement)</p>
+        </header>
 
-  <main>
-    <section id="home">
-      <h2>Welcome to Gastronomy Hub</h2>
-      <p>Explore the world of flavors and culinary excellence.</p>
-    </section>
-    <section id="recipes">
-      <h2>Featured Recipes</h2>
-      <div class="recipe">
-        <h3>Recipe 1</h3>
-        <p>Short description of the recipe.</p>
-      </div>
-      <div class="recipe">
-        <h3>Recipe 2</h3>
-        <p>Short description of the recipe.</p>
-      </div>
-    </section>
-    <section id="articles">
-      <h2>Food Articles</h2>
-      <article>
-        <h3>Article Title</h3>
-        <p>Summary of the article...</p>
-      </article>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2024 Gastronomy Hub. All Rights Reserved.</p>
-  </footer>
-
-  <script src="">
-    // script.js
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("Welcome to Gastronomy Hub!");
-  });
-  
-  </script>
+        <main>
+            <div class="profile">
+                <img src="salah.jpg" alt="Photo de Salah Chakor" class="profile-image">
+                <p class="profile-text">
+                    <strong>Salah Chakor</strong><br>
+                    Expert en Gestion Hôtelière et Tourisme, Conseiller culinaire, Directeur Général de l'entreprise Gestion de Service HRC et Fo.
+                </p>
+            </div>
+        </main>
+    </div>
 </body>
 </html>
