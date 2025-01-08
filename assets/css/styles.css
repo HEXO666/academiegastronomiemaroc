@@ -32,6 +32,7 @@
   :root {
     --normal-font-size: 1rem;
   }
+  
 }
 
 /*=============== BASE ===============*/
@@ -46,7 +47,6 @@ body {
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
 }
-
 ul {
   list-style: none;
   /* Color highlighting when pressed on mobile devices */
@@ -144,6 +144,9 @@ size: 25%;
     pointer-events: none;
     opacity: 0;
     transition: top .4s, opacity .3s;
+  }
+  .hide{
+    display: none;
   }
   .nav__menu::-webkit-scrollbar {
     width: 0;

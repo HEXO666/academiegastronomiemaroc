@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Viewer</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+    <script>
+        // Disable right-click context menu
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // Disable key combinations for saving, printing, and viewing the source
+        document.addEventListener('keydown', event => {
+            if ((event.ctrlKey || event.metaKey) && 
+                (['s', 'p', 'u', 'o'].includes(event.key) || event.key === 'S' || event.key === 'P' || event.key === 'U' || event.key === 'O')) {
+                event.preventDefault();
+            }
+            // Prevent F12 and other common keys for opening dev tools
+            if (event.key === 'F12' || 
+                (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'J' || event.key === 'C' || event.key === 'K'))) {
+                event.preventDefault();
+            }
+        });
+
+        // Additional measure for drag and drop prevention
+        document.addEventListener('dragstart', event => event.preventDefault());
+    </script>
+</head>
+<body>
+    <iframe src="cart.pdf#toolbar=0&navpanes=0&scrollbar=0"></iframe>
+</body>
+</html>

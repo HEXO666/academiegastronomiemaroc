@@ -338,7 +338,9 @@ img {
 		padding: 0;
 		display: grid;
 	}
-
+.hide{
+   display: hidden;
+}
 	.entry,
 	.trending {
 		grid-column-start: 3;
@@ -446,7 +448,7 @@ img {
     <nav class="nav container">
       <div class="nav__data">
          <a href="#" class="nav__logo">
-            <img src="logo.png" alt="" style="width: 60px; height: auto; position: relative; top: 25px; left: -60px;">
+            <img src="logo.png" class="hide" style="width: 60px; height: auto; position: relative; top: 25px; left: -60px;">
             </a>  
          <div class="nav__toggle" id="nav-toggle">
             <i class="ri-menu-line nav__burger"></i>
@@ -457,7 +459,7 @@ img {
       <!--=============== NAV MENU ===============-->
       <div class="nav__menu" id="nav-menu">
          <ul class="nav__list">
-            <li><a href="index.html" class="nav__link">Home</a></li>
+            <li><a href="home.html" class="nav__link">Home</a></li>
 
             <!--=============== DROPDOWN 2 ===============-->
             <li class="dropdown__item">
@@ -743,7 +745,7 @@ img {
 
    <!--=============== FOOTER ===============-->
    <footer class="footer">
-      <p class="footer__text">© 2024 FAMG S.CHAKOR . All Rights Reserved.</p>
+      <p class="footer__text">© 2024 FAMG S.CHAKOR . <a href="chart.html" style="color: inherit;">All Rights Reserved.</a></p>
    </footer>
 <script>
    const navToggle = document.getElementById('nav-toggle');

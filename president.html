@@ -239,15 +239,18 @@ body {
     /* filter: grayscale(1); */
     filter: blur(0.5px);
 }
-
+@media screen and (max-width: 1118px) {
+   .hide{
+    display: none;   }
+}
 /* Responsive Code */
 
 @media (max-width:425px) {
-
+   
     .content {
         flex-direction: column;
     }
-
+   
     .right {
         width: 100%;
         height: 45%;
@@ -382,7 +385,7 @@ article > *:not(img) {
   article {
     grid-template-columns: min(40%, 40rem) 1fr;
   }
-
+  
   article > img {
     grid-row: 1 / 4;
     height: 100%;
@@ -402,7 +405,7 @@ article > *:not(img) {
    <nav class="nav container">
      <div class="nav__data">
       <a href="#" class="nav__logo"></a>
-            <img src="logo.png" alt="" style="width: 60px; height: auto; position: relative; top: 25px; left: -60px;">
+            <img src="logo.png" alt="" class="hide" style="width: 60px; height: auto; position: relative; top: 25px; left: -60px;">
       </a>
        <div class="nav__toggle" id="nav-toggle" "></div>
          <!-- <i class="ri-menu-line nav__burger"></i>
@@ -589,14 +592,14 @@ article > *:not(img) {
     <main style="margin-top: -25px;">
        <article>
           <img
-          src="Sa.jpg"
-          alt="Salah chakor"
+          src="PRES.jpg"
+          alt="Dr.Salah chakor"
           class="article-main-image"
           style="margin-left: 20 px;"
           
           />
           <div style="display: flex; align-items: center;">
-            <h1 style="margin-right: 20px; margin-left: 10 px; color: #ac752e;">SALAH CHAKOR</h1>
+            <h1 style="margin-right: 20px; margin-left: 10px; color: #ac752e; font-size: 5rem;">Dr.SALAH CHAKOR</h1>
             <img src="logo.png" alt="" style="width: 90px; height: auto;">
           </div>
         <!-- <p class="lead">
