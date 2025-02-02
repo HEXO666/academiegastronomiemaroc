@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!--=============== REMIXICONS ===============-->
+   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+   <link rel="stylesheet" href="assets/css/styles.css">
+
+   <title>Gastronomy Site</title>
+
+   <style>
+   /* General Reset */
+   body {
+     font-size: 16px; /* Default size */
+     margin: 0;
+     font-family: Arial, sans-serif;
+     background-color: #f9f9f9;
+     color: #333;
+   }
+   /*
+LINKS:
+Typetura docs: https://docs.typetura.com/creating-with-typetura/creating-your-own-typographic-system
+Cubic Bezier: https://cubic-bezier.com/
+Fraunces: https://fraunces.undercase.xyz/
+Google variable fonts: https://css-tricks.com/getting-the-most-out-of-variable-fonts-on-google-fonts/
+Grid system: https://gist.github.com/scottkellum/bb46ea68c23e630842ee80c37513a3e6
+*/
+
+/* Import our variable font Fraunces */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&family=Fraunces:ital,opsz,wght,SOFT,WONK@1,9..144,100..900,0..100,0..1&display=swap");
+
+/* Variables and page setup */
+
+html {
+
+
+	/* Typetura */
+	--tt-key: html;
+	--tt-max: 900;
+	--tt-ease: cubic-bezier(0, 0.78, 0.53, 1);
+
+	/* Grid */
+	--max-width: 1200px;
+	--columns: 6;
+	--gutter: 1.5rem;
+
+	/* Color */
+	--primary: #f4663a;
+	--background: #efeded;
+	--background-alt: #ffffff;
+	--text: #31355b;
+}
+@keyframes html {
+	0% {
+		font-size: 0%;
+	}
+
+	100% {
+		font-size: 125%;
+	}
+}
+* {
+	--grid: minmax(var(--gutter), 1fr)
+		repeat(
+			var(--columns),
+			minmax(
+				0,
+				calc(
+					(var(--max-width) - (var(--gutter) * (var(--columns) - 1))) /
+						var(--columns)
+				)
+			)
+		)
+		minmax(var(--gutter), 1fr);
+}
+
+/* Element styles */
+
+body {
+	margin: 0;
+}
+
+img {
+	width: 100%;
+}
+
+/* Typography */
+
+.masthead {
+	color: var(--primary);
+	mix-blend-mode: multiply;
+	text-align: center;
+	font-variation-settings: "WONK" 1, "SOFT" 30;
+	--tt-key: masthead;
+	--tt-max: 1200;
+	--tt-ease: ease-in-out;
+	margin: 0.5em 0 -0.5em;
+}
+@keyframes masthead {
+	0% {
+		font-size: 1rem;
+		margin-bottom: -0.45em;
+		font-weight: 600;
+	}
+	100% {
+		font-size: 6.5rem;
+		margin-bottom: -0.375em;
+		font-weight: 500;
+	}
+}
+
+.primary-headline {
+	--tt-key: primary-headline;
+	--tt-ease: cubic-bezier(1, 0, 1, 1);
+	--tt-max: 585;
+	line-height: 1;
+	font-variation-settings: "SOFT" 0, "WONK" 1;
+	margin: 0.5rem 0;
+}
+@keyframes primary-headline {
+	0% {
+		font-size: 1rem;
+		font-weight: 500;
+	}
+	100% {
+		font-size: 4rem;
+		font-weight: 300;
+	}
+}
+
+.meta {
+	font-style: italic;
+	margin: 0.25rem 0;
+	font-size: 0.75rem;
+}
+
+.entry-summary {
+	margin: 0.25rem 0;
+}
+
+/* Layout */
+
+.main {
+	column-gap: var(--gutter);
+	grid-template-columns: var(--grid);
+	padding: var(--gutter);
+}
+
+.entry {
+	margin-bottom: var(--gutter);
+}
+
+.entry,
+.entry-content {
+	display: flex;
+	flex-direction: column;
+}
+
+.entry-img {
+	aspect-ratio: 5 / 3;
+	object-fit: cover;
+}
+
+.entry-date {
+	order: -1;
+}
+
+/* Module overrides */
+
+.entry-lede time {
+	margin-bottom: 1rem;
+}
+
+.entry-lede time::after {
+	content: "";
+	display: block;
+	width: calc(100% + (var(--gutter) * 2));
+	height: 1px;
+	margin-left: calc(var(--gutter) * -2);
+	background: var(--primary);
+	mix-blend-mode: multiply;
+	margin-top: 0.67rem;
+}
+
+/* Breakpoints */
+
+@media (min-width: 30em) {
+	html {
+		--columns: 12;
+	}
+	.main,
+	.entry-lede {
+		padding: 0;
+		display: grid;
+	}
+.hide{
+   display: hidden;
+}
+	.entry,
+	.trending {
+		grid-column-start: 3;
+		grid-column-end: span 10;
+	}
+
+	.entry-lede {
+		column-gap: var(--gutter);
+		grid-template-columns: var(--grid);
+		grid-column-start: 1;
+		grid-column-end: span 14;
+		margin-bottom: 4rem;
+	}
+
+	.entry-lede > .entry-img {
+		aspect-ratio: auto;
+		grid-column-start: 1;
+		grid-column-end: span 10;
+	}
+
+	.entry-lede .entry-content {
+		grid-column-start: 3;
+		grid-column-end: span 11;
+		margin: -2.5rem calc(var(--gutter) * -1) 0;
+		background: var(--background-alt);
+		padding: 0.5rem var(--gutter) 1rem;
+	}
+}
+@media (min-width: 50em) {
+	html {
+		--columns: 24;
+	}
+
+	.main::before,
+	.main::after {
+		content: "";
+		display: block;
+		grid-column-start: 8;
+		grid-column-end: 26;
+		grid-row-start: 2;
+		grid-row-end: 3;
+		background: var(--background-alt);
+		margin: 0 calc(var(--gutter) * -1);
+		z-index: -1;
+	}
+	.main::after {
+		grid-column-start: 2;
+		background-color: var(--primary);
+		height: 1px;
+		mix-blend-mode: multiply;
+	}
+
+	.entry {
+		grid-column-end: span 9;
+		margin-bottom: var(--gutter);
+	}
+	.entry:nth-child(n + 2) {
+		margin-top: -2rem;
+		grid-row-start: 2;
+	}
+	.entry:nth-child(2) {
+		grid-column-start: 8;
+	}
+	.entry:nth-child(3) {
+		grid-column-start: 17;
+	}
+
+	.entry-lede {
+		column-gap: var(--gutter);
+		grid-template-columns: var(--grid);
+		grid-column-start: 1;
+		grid-column-end: span 26;
+		margin-bottom: 4rem;
+	}
+
+	.entry-lede > .entry-img {
+		aspect-ratio: auto;
+		grid-column-start: 1;
+		grid-column-end: span 13;
+	}
+
+	.entry-lede .entry-content {
+		grid-column-start: 14;
+		grid-column-end: span 12;
+		margin: 0.5rem 0;
+		padding: 4rem 0 0;
+		background: none;
+	}
+
+	.trending {
+		grid-row-start: 2;
+		grid-column-start: 2;
+		grid-column-end: span 6;
+		margin-top: var(--gutter);
+		transform: translatex(calc(var(--gutter) * -1));
+	}
+}
+/* Grid Layout for Books */
+.library {
+         padding: 60px 20px;
+         text-align: center;
+      }
+
+      .section__title {
+         font-size: 2.5rem;
+         margin-bottom: 40px;
+         color: #6e4d21;
+      }
+
+      .books__grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+         gap: 20px;
+      }
+
+      .book__card {
+         background-color: #fff;
+         border-radius: 10px;
+         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+         overflow: hidden;
+         transition: transform 0.3s;
+      }
+
+      .book__card:hover {
+         transform: translateY(-10px);
+      }
+
+      .book__image {
+         width: 100%;
+         height: 200px;
+         object-fit: cover;
+      }
+
+      .book__name {
+         padding: 15px;
+         font-size: 1.25rem;
+         font-weight: bold;
+         color: #555;
+      }
+
+      .book__link {
+         display: block;
+         padding: 10px;
+         background-color: #daa65e;
+         color: white;
+         text-decoration: none;
+         border-radius: 5px;
+         margin: 10px;
+         transition: background-color 0.3s;
+      }
+
+      .book__link:hover {
+         background-color: #7a5219;
+      }
+
+      /* Footer */
+      .footer {
+         background-color: #333;
+         color: white;
+         text-align: center;
+         padding: 20px;
+      }
+
+      .footer__text {
+         margin: 0;
+         font-size: 1rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+         .nav__toggle {
+            display: block;
+         }
+
+         .nav__menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+         }
+
+         .nav__menu.show-menu {
+            display: flex;
+         }
+
+         .nav__list {
+            flex-direction: column;
+            gap: 10px;
+         }
+
+         .dropdown__menu {
+            position: static;
+            box-shadow: none;
+         }
+      }
+
+      
+   </style>
+</head>
+<body>
+   <!--=============== HEADER ===============-->
+   <header class="header">
+    <nav class="nav container">
+      <div class="nav__data">
+         <a href="#" class="nav__logo">
+            <img src="logo.png" class="hide" style="width: 60px; height: auto; position: relative; top: 25px; left: -60px;">
+            </a>  
+         <div class="nav__toggle" id="nav-toggle">
+            <i class="ri-menu-line nav__burger"></i>
+            <i class="ri-close-line nav__close"></i>
+         </div>
+      </div>
+
+      <!--=============== NAV MENU ===============-->
+      <div class="nav__menu" id="nav-menu">
+         <ul class="nav__list">
+            <li><a href="index.html" class="nav__link">Home</a></li>
+
+            <!--=============== DROPDOWN 2 ===============-->
+            <li class="dropdown__item">
+               <div class="nav__link">
+                  Nos rubriques <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+               </div>
+
+               <ul class="dropdown__menu">
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class=""></i>  L'Anthropologie de la gastronomie
+
+                     </a>                          
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class=""></i> L'histoire et l'authenticité
+                     </a>
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> L'inventaire des plats
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i>  Le patrimoine culinaire
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> La science de l'alimentation
+                     </a>
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> Le rapport du tourisme
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> Le rôle des restaurants dans le promotion
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> Importance
+                     </a>
+                  </li>
+               </ul>
+            </li>
+
+            <!--=============== DROPDOWN 1 ===============-->
+            <li class="dropdown__item">
+               <div class="nav__link">
+                  Nos recettes <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+               </div>
+
+               <ul class="dropdown__menu">
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="salees"></i> salées 
+                     </a>                          
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class=""></i> sucrées
+                     </a>
+                  </li>
+
+                  <!--=============== DROPDOWN SUBMENU ===============-->
+                  <li class="dropdown__subitem">
+                     <div class="dropdown__link">
+                        <i class="#"></i> autre <i class="ri-add-line dropdown__add"></i>
+                     </div>
+
+                     <ul class="dropdown__submenu">
+                        <li>
+                           <a href="#" class="dropdown__sublink">
+                              <i class="#"></i> Boissons et Infusions
+                           </a>
+                        </li>
+
+                        <li>
+                           <a href="epices.html" class="dropdown__sublink">
+                              <i class="epi"></i>Condiments et Épices
+                           </a>
+                        </li>
+
+                        <li>
+                           <a href="#" class="dropdown__sublink">
+                              <i class="#"></i> pâtisseries 
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </li>
+            
+            <li><a href="livres.html" class="nav__link">Livres</a></li>
+
+            <!--=============== DROPDOWN 2 ===============-->
+            <li class="dropdown__item">
+               <div class="nav__link">
+                  Articles de recherche   <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+               </div>
+
+               <ul class="dropdown__menu">
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="ri-user-line"></i> #
+                     </a>                          
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="ri-lock-line"></i> #
+                     </a>
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="ri-message-3-line"></i> #
+                     </a>
+                  </li>
+               </ul>
+            </li>
+            <!--=============== DROPDOWN 2 ===============-->
+            <li class="dropdown__item">
+               <a href="president.html" class="nav__link">
+               <div class="nav__link">
+                  Mot du Président <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+               </div>
+            </a>
+
+            </li>
+
+            <li><a href="contact.html" class="nav__link">Contact</a></li>
+         </ul>
+      </div>
+   </nav>
+</header>
+<br><br><br><br>
+<!-- Book Library Section -->
+<section class="library">
+    <h2 class="section__title">Book Library</h2>
+    <div class="books__grid">
+       <!-- Book Card 1 -->
+       <div class="book__card">
+          <img src="book1.jpg" alt="Book 1" class="book__image">
+          <h3 class="book__name">Book Title 1</h3>
+          <a href="book1.pdf" class="book__link" download>Download</a>
+       </div>
+
+       <!-- Book Card 2 -->
+       <div class="book__card">
+          <img src="book2.jpg" alt="Book 2" class="book__image">
+          <h3 class="book__name">Book Title 2</h3>
+          <a href="book2.pdf" class="book__link" download>Download</a>
+       </div>
+
+       <!-- Add more book cards as needed -->
+    </div>
+ </section>
+
+ <!-- Footer -->
+ <footer class="footer">
+    <p class="footer__text">&copy; 2023 Book Library. All rights reserved.</p>
+ </footer>
+
+ <script>
+    // Toggle navigation menu for mobile
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    navToggle.addEventListener('click', () => {
+       navMenu.classList.toggle('show-menu');
+    });
+ </script>
+>
+<br>
+<br>
+<br> 
+<br>
+<br>
+
+</body>
+</html>
