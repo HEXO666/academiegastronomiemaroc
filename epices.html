@@ -457,22 +457,64 @@ size: 25%;
             .container {
                 padding: 10px;
             }
+            /* Burger Menu Additions */
+        .nav__burger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--white-color);
+        }
+
+        @media screen and (max-width: 1118px) {
+            .nav__burger {
+                display: block;
+                position: absolute;
+                top: 50%;
+                right: 1.5rem;
+                transform: translateY(-50%);
+            }
+
+            .nav__menu {
+                position: fixed;
+                top: var(--header-height);
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - var(--header-height));
+                background: var(--black-color);
+                transition: left 0.3s ease;
+                overflow-y: auto;
+                padding: 1rem 0;
+            }
+
+            .nav__menu.active {
+                left: 0;
+            }
+
+            .nav__close {
+                display: none;
+                position: absolute;
+                top: 1rem;
+                right: 1.5rem;
+                font-size: 1.5rem;
+                color: var(--white-color);
+                cursor: pointer;
+            }
+        }
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <nav class="nav container">
-          <div class="nav__data">
-             <a href="#" class="nav__logo">
-                <img src="logo.png" class="hide" style="width: 60px; height: auto; position: relative; top: 25px; left: -60px;">
-                </a>  
-             <div class="nav__toggle" id="nav-toggle">
-                <i class="ri-menu-line nav__burger"></i>
-                <i class="ri-close-line nav__close"></i>
-             </div>
-          </div>
-    
+   <header class="header">
+      <nav class="nav container">
+         <div class="nav__data">
+            <a href="#" class="nav__logo">
+               <img src="logo.png" class="hide" style="width: 60px; height: auto; position: relative; top: 25px; left: -60px;">
+               </a>  
+            <div class="nav__toggle" id="nav-toggle">
+               <i class="ri-menu-line nav__burger"></i>
+               <i class="ri-close-line nav__close"></i>
+            </div>
+         </div>
           <!--=============== NAV MENU ===============-->
           <div class="nav__menu" id="nav-menu">
              <ul class="nav__list">
@@ -771,5 +813,28 @@ size: 25%;
         </div>
     </section>
     </div>
+    <script>
+          
+        // Burger Menu Functionality
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        const navClose = document.querySelector('.nav__close');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navClose.style.display = navMenu.classList.contains('active') ? 'block' : 'none';
+        });
+
+        // Close menu when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                navMenu.classList.remove('active');
+                navClose.style.display = 'none';
+            }
+        });
+
+        // Original JavaScript remains unchanged
+    
+    </script>
 </body>
 </html>
