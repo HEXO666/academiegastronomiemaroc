@@ -21,13 +21,32 @@
        position: relative;
        margin-top: -20px;
    }
+   .background-con {
+    background-image: url('cover2.jpg');
+    background-size: cover;
+    background-position: left;
+    background-repeat: no-repeat;
+    min-height: 66vh;  /* Half screen height on mobile */
+    min-width: 100%;
+    position: relative;
+    margin-top: 100px;
+}
+.background-co {
+    background-image: url('cover2.jpg');
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
+    min-height: 66vh;  /* Half screen height on mobile */
+    position: relative;
+    margin-top: 1px;
+}
    body {
      font-size: 13px; /* Default size */
      margin: auto;
      font-family: Arial, sans-serif;
      color: #333;
    }
-   
+
    .show-menu {
      display: block;
    }
@@ -52,6 +71,26 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             padding: 20px;
         }
+        .con {
+    position: absolute;
+    top: 20px;  /* Adjusted for mobile */
+    left: 20px;  /* Positioned at top-left */
+    transform: none;  /* Remove centering transform */
+    text-align: left;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 440px;  /* Reduced from 1000px */
+}
+.co {
+    position: absolute;
+    top: 20px;  /* Adjusted for mobile */
+    right: 20px;  /* Positioned at top-left */
+    transform: none;  /* Remove centering transform */
+    text-align: left;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 20px;  /* Reduced from 1000px */
+}
 
         /* Desktop version */
         @media (min-width: 768px) {
@@ -61,11 +100,33 @@
 
             }
         }
+        @media (min-width: 768px) {
+    .background-con {
+      min-height: 140vh;  /* Full screen on desktop */
+      margin-top: 40px;
+    }
+    
+    .con {
+        top: 50%;
+        left: 60%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+    }
+}
+@media (min-width: 768px) {
+    .background-co {
+      display: none;
+        min-height: 160vh;
+        margin-top: 0;
+    }
+    
+  
+}
 
 
 
 
-      
+
    </style>
 </head>
 <body>
@@ -75,23 +136,23 @@
       <div class="nav__data">
          <a href="#" class="nav__logo">
             <img src="logo.png" class="hide" style="width: 60px; height: auto; position: relative; top: 25px; left: -60px;">
-            </a>  
+            </a>
          <div class="nav__toggle" id="nav-toggle">
             <i class="ri-menu-line nav__burger"></i>
             <i class="ri-close-line nav__close"></i>
       </div>
       </div>
-      
+
       <script>
       document.addEventListener("DOMContentLoaded", function() {
           const navToggle = document.getElementById('nav-toggle');
           const navMenu = document.getElementById('nav-menu');
           const navClose = document.querySelector('.nav__close');
-      
+
           navToggle.addEventListener('click', () => {
               navMenu.classList.toggle('show-menu');
           });
-      
+
           navClose.addEventListener('click', () => {
               navMenu.classList.remove('show-menu');
           });
@@ -114,7 +175,7 @@
                      <a href="#" class="dropdown__link">
                         <i class=""></i>  L'Anthropologie de la gastronomie
 
-                     </a>                          
+                     </a>
                   </li>
 
                   <li>
@@ -166,8 +227,8 @@
                <ul class="dropdown__menu">
                   <li>
                      <a href="#" class="dropdown__link">
-                        <i class="salees"></i> salées 
-                     </a>                          
+                        <i class="salees"></i> salées
+                     </a>
                   </li>
 
                   <li>
@@ -197,14 +258,14 @@
 
                         <li>
                            <a href="#" class="dropdown__sublink">
-                              <i class="#"></i> pâtisseries 
+                              <i class="#"></i> pâtisseries
                            </a>
                         </li>
                      </ul>
                   </li>
                </ul>
             </li>
-            
+
             <li><a href="livres.html" class="nav__link">Livres</a></li>
 
             <!--=============== DROPDOWN 2 ===============-->
@@ -217,7 +278,7 @@
                   <li>
                      <a href="#" class="dropdown__link">
                         <i class="ri-user-line"></i> #
-                     </a>                          
+                     </a>
                   </li>
 
                   <li>
@@ -248,11 +309,22 @@
       </div>
    </nav>
 </header>
-<br><br><br>
-<br><br>
-<div class="background-container">
+<br><br><br><div class="background-container">
     <div class="content">
         <h1>
         <p></p>
     </div>
+</div>
+<div class="background-con">
+   <div class="con">
+       <h1>
+       <p></p>
+   </div>
+</div>
+<br><br> 
+<div class="background-co">
+   <div class="co">
+       <h1>
+       <p></p>
+   </div>
 </div>
