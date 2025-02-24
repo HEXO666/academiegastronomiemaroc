@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!--=============== REMIXICONS ===============-->
+   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+   <link rel="stylesheet" href="assets/css/styles.css">
+
+   <title>Gastronomy Site</title>
+
+   <style>
+   /* General Reset */
+   body {
+     font-size: 16px; /* Default size */
+     margin-left: 0;
+     font-family: Arial, sans-serif;
+     background-color: #f9f9f9;
+     color: #333;
+   }
+   
+   .show-menu {
+     display: block;
+   }
+
+      /* Hero Section */
+      .hero {
+         background: url('') center/cover no-repeat; /* Add your hero background image URL */
+         color: white;
+         text-align: center;
+         padding: 5vw 5%; /* Make padding responsive */
+        }
+      html {
+         font-size: 70%; /* 1rem = 16px by default, will adjust based on zoom */
+      }
+
+
+      .hero__title {
+         font-size: 3rem;
+         margin-bottom: 20px;
+      }
+
+      .hero__subtitle {
+         font-size: 1.5rem;
+         margin-bottom: 30px;
+      }
+
+      .hero__button {
+         display: inline-block;
+         padding: 10px 20px;
+         background-color: #ff6f61;
+         color: white;
+         text-decoration: none;
+         border-radius: 5px;
+         font-size: 1rem;
+         transition: background-color 0.3s;
+      }
+
+      .hero__button:hover {
+         background-color: #ff4c3b;
+      }
+
+      /* Categories Section */
+      .categories {
+         padding: 60px 20px;
+         background-color: #fff;
+         text-align: center;
+      }
+
+      .section__title {
+         font-size: 2.5rem;
+         margin-bottom: 40px;
+         color: #6e4d21;
+      }
+
+      .categories__grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+         gap: 20px;
+      }
+
+      .category__card {
+         background-color: #f4f4f4;
+         border-radius: 10px;
+         overflow: hidden;
+         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+         transition: transform 0.3s;
+      }
+
+      .category__card:hover {
+         transform: translateY(-10px);
+      }
+
+      .category__image {
+         width: 100%;
+         height: 150px;
+         object-fit: cover;
+      }
+
+      .category__name {
+         padding: 15px;
+         font-size: 1.25rem;
+         font-weight: bold;
+         color: #555;
+      }
+
+      /* Recipes Section */
+      .recipes {
+         padding: 60px 20px;
+         background-color: #f9f9f9;
+      }
+
+      .recipes__grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+         gap: 20px;
+      }
+
+      .recipe__card {
+         background-color: #fff;
+         border-radius: 10px;
+         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+         overflow: hidden;
+         transition: transform 0.3s;
+      }
+
+      .recipe__card:hover {
+         transform: translateY(-10px);
+      }
+
+      .recipe__image {
+         width: 100%;
+         height: 180px;
+         object-fit: cover;
+      }
+
+      .recipe__name {
+         padding: 15px;
+         font-size: 1.5rem;
+         font-weight: bold;
+         color: #333;
+      }
+
+      .recipe__description {
+         padding: 0 15px 15px;
+         font-size: 1rem;
+         color: #666;
+      }
+
+      /* Footer */
+      .footer {
+         background-color: #333;
+         color: white;
+         text-align: center;
+         padding: 20px;
+      }
+
+      .footer__text {
+         margin: 0;
+         font-size: 1rem;
+      }
+      /* Article */
+
+   /*
+LINKS:
+Typetura docs: https://docs.typetura.com/creating-with-typetura/creating-your-own-typographic-system
+Cubic Bezier: https://cubic-bezier.com/
+Fraunces: https://fraunces.undercase.xyz/
+Google variable fonts: https://css-tricks.com/getting-the-most-out-of-variable-fonts-on-google-fonts/
+Grid system: https://gist.github.com/scottkellum/bb46ea68c23e630842ee80c37513a3e6
+*/
+
+/* Import our variable font Fraunces */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&family=Fraunces:ital,opsz,wght,SOFT,WONK@1,9..144,100..900,0..100,0..1&display=swap");
+
+/* Variables and page setup */
+
+html {
+
+
+	/* Typetura */
+	--tt-key: html;
+	--tt-max: 900;
+	--tt-ease: cubic-bezier(0, 0.78, 0.53, 1);
+
+	/* Grid */
+	--max-width: 1200px;
+	--columns: 6;
+	--gutter: 1.5rem;
+
+	/* Color */
+	--primary: #f4663a;
+	--background: #efeded;
+	--background-alt: #ffffff;
+	--text: #31355b;
+}
+@keyframes html {
+	0% {
+		font-size: 0%;
+	}
+
+	100% {
+		font-size: 125%;
+	}
+}
+* {
+	--grid: minmax(var(--gutter), 1fr)
+		repeat(
+			var(--columns),
+			minmax(
+				0,
+				calc(
+					(var(--max-width) - (var(--gutter) * (var(--columns) - 1))) /
+						var(--columns)
+				)
+			)
+		)
+		minmax(var(--gutter), 1fr);
+}
+
+/* Element styles */
+
+body {
+	margin: 0;
+}
+
+img {
+	width: 100%;
+}
+
+/* Typography */
+
+.masthead {
+	color: var(--primary);
+	mix-blend-mode: multiply;
+	text-align: center;
+	font-variation-settings: "WONK" 1, "SOFT" 30;
+	--tt-key: masthead;
+	--tt-max: 1200;
+	--tt-ease: ease-in-out;
+	margin: 0.5em 0 -0.5em;
+}
+@keyframes masthead {
+	0% {
+		font-size: 1rem;
+		margin-bottom: -0.45em;
+		font-weight: 600;
+	}
+	100% {
+		font-size: 6.5rem;
+		margin-bottom: -0.375em;
+		font-weight: 500;
+	}
+}
+
+.primary-headline {
+	--tt-key: primary-headline;
+	--tt-ease: cubic-bezier(1, 0, 1, 1);
+	--tt-max: 585;
+	line-height: 1;
+	font-variation-settings: "SOFT" 0, "WONK" 1;
+	margin: 0.5rem 0;
+}
+@keyframes primary-headline {
+	0% {
+		font-size: 1rem;
+		font-weight: 500;
+	}
+	100% {
+		font-size: 4rem;
+		font-weight: 300;
+	}
+}
+
+.meta {
+	font-style: italic;
+	margin: 0.25rem 0;
+	font-size: 0.75rem;
+}
+
+.entry-summary {
+	margin: 0.25rem 0;
+}
+
+/* Layout */
+
+.main {
+	column-gap: var(--gutter);
+	grid-template-columns: var(--grid);
+	padding: var(--gutter);
+}
+
+.entry {
+	margin-bottom: var(--gutter);
+}
+
+.entry,
+.entry-content {
+	display: flex;
+	flex-direction: column;
+}
+
+.entry-img {
+	aspect-ratio: 5 / 3;
+	object-fit: cover;
+}
+
+.entry-date {
+	order: -1;
+}
+
+/* Module overrides */
+
+.entry-lede time {
+	margin-bottom: 1rem;
+}
+
+.entry-lede time::after {
+	content: "";
+	display: block;
+	width: calc(100% + (var(--gutter) * 2));
+	height: 1px;
+	margin-left: calc(var(--gutter) * -2);
+	background: var(--primary);
+	mix-blend-mode: multiply;
+	margin-top: 0.67rem;
+}
+
+/* Breakpoints */
+
+@media (min-width: 30em) {
+	html {
+		--columns: 12;
+	}
+	.main,
+	.entry-lede {
+		padding: 0;
+		display: grid;
+	}
+.hide{
+   display: hidden;
+}
+	.entry,
+	.trending {
+		grid-column-start: 3;
+		grid-column-end: span 10;
+	}
+
+	.entry-lede {
+		column-gap: var(--gutter);
+		grid-template-columns: var(--grid);
+		grid-column-start: 1;
+		grid-column-end: span 14;
+		margin-bottom: 4rem;
+	}
+
+	.entry-lede > .entry-img {
+		aspect-ratio: auto;
+		grid-column-start: 1;
+		grid-column-end: span 10;
+	}
+
+	.entry-lede .entry-content {
+		grid-column-start: 3;
+		grid-column-end: span 11;
+		margin: -2.5rem calc(var(--gutter) * -1) 0;
+		background: var(--background-alt);
+		padding: 0.5rem var(--gutter) 1rem;
+	}
+}
+@media (min-width: 50em) {
+	html {
+		--columns: 24;
+	}
+
+	.main::before,
+	.main::after {
+		content: "";
+		display: block;
+		grid-column-start: 8;
+		grid-column-end: 26;
+		grid-row-start: 2;
+		grid-row-end: 3;
+		background: var(--background-alt);
+		margin: 0 calc(var(--gutter) * -1);
+		z-index: -1;
+	}
+	.main::after {
+		grid-column-start: 2;
+		background-color: var(--primary);
+		height: 1px;
+		mix-blend-mode: multiply;
+	}
+
+	.entry {
+		grid-column-end: span 9;
+		margin-bottom: var(--gutter);
+	}
+	.entry:nth-child(n + 2) {
+		margin-top: -2rem;
+		grid-row-start: 2;
+	}
+	.entry:nth-child(2) {
+		grid-column-start: 8;
+	}
+	.entry:nth-child(3) {
+		grid-column-start: 17;
+	}
+
+	.entry-lede {
+		column-gap: var(--gutter);
+		grid-template-columns: var(--grid);
+		grid-column-start: 1;
+		grid-column-end: span 26;
+		margin-bottom: 4rem;
+	}
+
+	.entry-lede > .entry-img {
+		aspect-ratio: auto;
+		grid-column-start: 1;
+		grid-column-end: span 13;
+	}
+
+	.entry-lede .entry-content {
+		grid-column-start: 14;
+		grid-column-end: span 12;
+		margin: 0.5rem 0;
+		padding: 4rem 0 0;
+		background: none;
+	}
+
+	.trending {
+		grid-row-start: 2;
+		grid-column-start: 2;
+		grid-column-end: span 6;
+		margin-top: var(--gutter);
+		transform: translatex(calc(var(--gutter) * -1));
+	}
+}
+
+      
+   </style>
+</head>
+<body>
+   <!--=============== HEADER ===============-->
+   <header class="header">
+    <nav class="nav container">
+      <div class="nav__data">
+         <a href="#" class="nav__logo">
+            <img src="logo.png" class="hide" style="width: 60px; height: auto; position: relative; top: 25px; left: -60px;">
+            </a>  
+         <div class="nav__toggle" id="nav-toggle">
+            <i class="ri-menu-line nav__burger"></i>
+            <i class="ri-close-line nav__close"></i>
+         </div>
+      </div>
+
+      <!--=============== NAV MENU ===============-->
+      <div class="nav__menu" id="nav-menu">
+         <ul class="nav__list">
+            <li><a href="index.html" class="nav__link"> Home </a></li>
+
+            <!--=============== DROPDOWN 2 ===============-->
+            <li class="dropdown__item">
+               <div class="nav__link">
+                  Nos rubriques <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+               </div>
+
+               <ul class="dropdown__menu">
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class=""></i>  L'Anthropologie de la gastronomie
+
+                     </a>                          
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class=""></i> L'histoire et l'authenticité
+                     </a>
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> L'inventaire des plats
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i>  Le patrimoine culinaire
+                     </a>
+                  </li>
+                  <li>
+                     <a href="alimentation.html" class="dropdown__link">
+                        <i class="e"></i> La science de l'alimentation
+                     </a>
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> le rapport du tourisme avec la gastronomie
+                     </a>
+                  </li>
+                  <!-- <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> Le rôle des restaurants dans le promotion
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> Importance
+                     </a>
+                  </li> -->
+               </ul>
+            </li>
+
+            <!--=============== DROPDOWN 1 ===============-->
+            <li class="dropdown__item">
+               <div class="nav__link">
+                  Nos recettes <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+               </div>
+
+               <ul class="dropdown__menu">
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="salees"></i> salées 
+                     </a>                          
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class=""></i> sucrées
+                     </a>
+                  </li>
+
+                  <!--=============== DROPDOWN SUBMENU ===============-->
+                  <li class="dropdown__subitem">
+                     <div class="dropdown__link">
+                        <i class="#"></i> autre <i class="ri-add-line dropdown__add"></i>
+                     </div>
+
+                     <ul class="dropdown__submenu">
+                        <li>
+                           <a href="#" class="dropdown__sublink">
+                              <i class="#"></i> Boissons et Infusions
+                           </a>
+                        </li>
+
+                        <li>
+                           <a href="epices.html" class="dropdown__sublink">
+                              <i class="epi"></i>Condiments et Épices
+                           </a>
+                        </li>
+
+                        <li>
+                           <a href="#" class="dropdown__sublink">
+                              <i class="#"></i> pâtisseries 
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </li>
+            
+            <li><a href="livres.html" class="nav__link">Livres</a></li>
+
+            <!--=============== DROPDOWN 2 ===============-->
+            <li class="dropdown__item">
+               <div class="nav__link">
+                  Articles de recherche   <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+               </div>
+
+               <ul class="dropdown__menu">
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="ri-user-line"></i> #
+                     </a>                          
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="ri-lock-line"></i> #
+                     </a>
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="ri-message-3-line"></i> #
+                     </a>
+                  </li>
+               </ul>
+            </li>
+            <!--=============== DROPDOWN 2 ===============-->
+            <li class="dropdown__item">
+               <a href="president.html" class="nav__link">
+               <div class="nav__link">
+                  Mot du Président <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+               </div>
+            </a>
+
+            </li>
+
+            <li><a href="contact.html" class="nav__link">Contact</a></li>
+         </ul>
+      </div>
+   </nav>
+</header>
+<br><br>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le rôle de l'alimentation dans le psychisme de l'homme</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; background-color: #f4f4f4; color: #333; margin: 0; padding: 20px;">
+    <header style="text-align: center; background-color: #c49b63; color: #fff; padding: 15px;">
+        <h1 style="font-size: 36px; margin: 0;">Le rôle de l'alimentation dans le psychisme de l'homme</h1>
+        <p style="font-size: 18px; margin: 5px 0;">Par Salah CHAKOR, Directeur de l’I.T.H.T de Ouarzazate</p>
+    </header>
+
+    <article style="background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); max-width: 900px; margin: 20px auto;">
+        <section>
+            <h2 style="font-size: 28px; color: #c49b63;">Introduction</h2>
+            <p style="font-size: 18px; margin-bottom: 20px;">Le besoin est une exigence née de la nature ou de la vie sociale. Autrement dit, c’est une tendance à une régularisation déterminée qui se traduit par un comportement externe. L’animal qui a faim commence par mobiliser ses réserves, fait notamment appel à la fonction glycogénique de son foie pour rétablir la composition de son milieu intérieur appauvri en métabolites.</p>
+        </section>
+
+        <section>
+            <h2 style="font-size: 28px; color: #c49b63;">Le besoin alimentaire et son impact psychique</h2>
+            <p style="font-size: 18px; margin-bottom: 20px;">Le besoin alimentaire est une extériorisation des pulsions innées, orientées vers la consommation des substances nutritives que l’organisme choisit par plaisir. Car c’est le plaisir et la recherche des sensations agréables ou l’évitement des sensations pénibles qui guident notre mécanisme dans le choix des aliments.</p>
+            <p style="font-size: 18px; margin-bottom: 20px;">Cette constatation nous pousse à admettre que l’acte de consommation alimentaire est un acte psychique de nature affective. Dans cette optique, l’aliment est non seulement la chose qui plaît, qu’on désire et qu’on aime.</p>
+        </section>
+
+        <section>
+            <h2 style="font-size: 28px; color: #c49b63;">Les différentes sensations liées à l'alimentation</h2>
+            <p style="font-size: 18px; margin-bottom: 20px;">Chez les animaux de laboratoire, tout comme chez l’homme, le sentiment de plaisir ou de déplaisir que la nature peut provoquer est de deux types différents, suivant sa localisation et suivant le moment de sa perception au cours de l’acte de consommation :</p>
+            <ul style="font-size: 18px; margin-bottom: 20px;">
+                <li style="margin-bottom: 10px;"><strong>a</strong> - La sensation de plaisir qu’on éprouve dans la bouche se déclenche au moment où la substance alimentaire contacte les récepteurs du complexe sensoriel de la muqueuse buccale et nasale.</li>
+                <li style="margin-bottom: 10px;"><strong>b</strong> - La sensation de plaisir (ou de déplaisir) ressentie par tout le corps se localise après l’absorption de la nourriture. Cette sensation possède une charge émotive perçue soit comme un sentiment de bien-être et d’aise, soit au contraire, comme un sentiment pénible de malaise.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2 style="font-size: 28px; color: #c49b63;">L'impact émotionnel et psychologique de l'alimentation</h2>
+            <p style="font-size: 18px; margin-bottom: 20px;">Le plaisir éprouvé à l’intérieur du corps, en grande partie d’origine digestive, a un rôle majeur dans la sélection des aliments. Il suffit qu’un aliment ait été accusé de donner une fois un malaise digestif pour qu’il soit refusé. Par contre, les aliments qui procurent une sensation et un sentiment de bien-être sont les bienvenus.</p>
+            <p style="font-size: 18px; margin-bottom: 20px;">Chez l’homme, comme chez l’animal évolué, le point de départ du psychisme alimentaire est le plaisir. L’aliment est une substance privilégiée, qui possède un contenu actif profond et intime. La bouche refuse le contact des substances sapides, sans odeur et sans saveur, mais dépourvues d’un certain tonus émotionnel et affectif; elle exige le plaisir.</p>
+        </section>
+
+        <section>
+            <h2 style="font-size: 28px; color: #c49b63;">La sacralité du plaisir alimentaire</h2>
+            <p style="font-size: 18px; margin-bottom: 20px;">C’est sans doute la sacralité du plaisir, qui est la plus répandue dans l’horizon de la pensée archaïque. La plupart des aliments considérés comme sacrés dans les sociétés traditionnelles doivent cette qualification à leur propriété. Ils sont sacrés parce qu’ils sont chauds à la bouche et au cœur, parce qu’ils sont ardemment désirés, parce qu’ils sont rares et chers. C’est le cas de la viande, de la graisse, des aliments sucrés,…</p>
+        </section>
+
+        <section>
+            <h2 style="font-size: 28px; color: #c49b63;">L'impact des habitudes alimentaires sur l'identité humaine</h2>
+            <p style="font-size: 18px; margin-bottom: 20px;">L’homme a toujours eu le sentiment, plus ou moins confus, qu’il est un peu la création de sa nourriture, qu’il soit fort ou faible, calme ou coléreux, bon ou cruel, suivant la « quantité » et surtout « la nature » des aliments qu’il consomme. L’homme est ce qu’il mange, nous sommes ici devant une idée archétypale universelle dont la formation paraît être la conclusion simple et logique d’une expérience humaine qui va depuis l’ingestion alimentaire jusqu’au sentiment qui révèle l’influence agréable ou désagréable de la nourriture sur notre être, conçu toujours comme une unité inséparable somatophylaque.</p>
+        </section>
+
+        <section>
+            <h2 style="font-size: 28px; color: #c49b63;">La nourriture et l’âme</h2>
+            <p style="font-size: 18px; margin-bottom: 20px;">Une autre chose est sûre dans la pensée « sauvage » libre des pressions intellectualistes, la nourriture nourrit non seulement la chair, mais aussi l’âme et l’esprit sain se trouve dans un corps sain. Il est donc évident qu’un corps ne peut être sain que s’il se nourrit d’une manière saine.</p>
+        </section>
+
+        <section>
+            <h2 style="font-size: 28px; color: #c49b63;">Conclusion</h2>
+            <p style="font-size: 18px; margin-bottom: 20px;">Pour se mettre à table, il faut être motivé psychiquement et psychologiquement, or ces deux types de motivation varient d’une personne à l’autre. Ceci-dit, le plaisir qu’on peut ressentir au niveau de la bouche en particulier et du corps en général, et au niveau du comportement alimentaire, varie suivant deux éléments :</p>
+            <ul style="font-size: 18px; margin-bottom: 20px;">
+                <li style="margin-bottom: 10px;">- L’état de besoin qui retentit puissamment sur le plan de la palatabilité et sur celui de la sensibilité générale.</li>
+                <li style="margin-bottom: 10px;">- Le tonus émotionnel de chaque aliment sur le plan de la palatabilité et sur celui de la sensibilité générale.</li>
+            </ul>
+            <p style="font-size: 18px; margin-bottom: 20px;">L’importance respective de ces deux facteurs varie suivant l’état de la « faim » et de « satiété » de l’organisme. L’homme de notre civilisation, qui est rarement vraiment affamé, et qui, par ses occupations professionnelles, a besoin d’un esprit clair, tend à abandonner les aliments lourds pour des aliments faciles à digérer, qui lui permettent de conserver sa vigilance pendant son travail.</p>
+        </section>
+
+        <section>
+            <h2 style="font-size: 28px; color: #c49b63;">Les habitudes alimentaires et la mémoire affective</h2>
+            <p style="font-size: 18px; margin-bottom: 20px;">Enfin, à la suite d’expériences heureuses précédentes, l’appétit est considéré pour les différents aliments comme un comportement acquis. Ce que l’homme ou l’animal de laboratoire désire devant la substance qu’il connaît et qu’il aime, est de renouveler un plaisir qu’il a déjà éprouvé. L’être humain a souvent tendance à faire confiance à sa mémoire affective dans ses traditions et habitudes alimentaires. C’est un sentiment psychique qui s’est développé à travers l’histoire de l’humanité. Autrement dit, entre l’homme et la nourriture, il subsiste une sorte de dimension identitaire cachée.</p>
+        </section>
+    </article>
+</body>
+</html>
