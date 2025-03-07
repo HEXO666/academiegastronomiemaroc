@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!--=============== REMIXICONS ===============-->
+   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+   <link rel="stylesheet" href="assets/css/styles.css">
+
+   <title>Gastronomy Site</title>
+
+   <style>
+   /* General Reset */
+   body {
+     font-size: 16px; /* Default size */
+     margin-left: 0;
+     font-family: Arial, sans-serif;
+     background-color: #f9f9f9;
+     color: #333;
+   }
+   
+   .show-menu {
+     display: block;
+   }
+
+   /* Hero Section */
+   .hero {
+      background: url('') center/cover no-repeat; /* Add your hero background image URL */
+      color: white;
+      text-align: center;
+      padding: 5vw 5%; /* Make padding responsive */
+   }
+   html {
+      font-size: 70%; /* 1rem = 16px by default, will adjust based on zoom */
+   }
+
+   .hero__title {
+      font-size: 3rem;
+      margin-bottom: 20px;
+   }
+
+   .hero__subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+   }
+
+   .hero__button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #ff6f61;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+   }
+
+   .hero__button:hover {
+      background-color: #ff4c3b;
+   }
+
+   /* Article Section */
+   .article-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      max-width: 900px;
+      margin: 20px auto;
+   }
+
+   .article-header {
+      text-align: center;
+      background-color: #c49b63;
+      color: #fff;
+      padding: 15px;
+   }
+
+   .article-header h1 {
+      font-size: 36px;
+      margin: 0;
+   }
+
+   .article-header p {
+      font-size: 18px;
+      margin: 5px 0;
+   }
+
+   .section-title {
+      font-size: 28px;
+      color: #c49b63;
+   }
+
+   .section-content {
+      font-size: 18px;
+      margin-bottom: 20px;
+   }
+
+   ul {
+      font-size: 18px;
+      margin-bottom: 20px;
+   }
+
+   ul li {
+      margin-bottom: 10px;
+   }
+   </style>
+</head>
+<body>
+   <!--=============== HEADER ===============-->
+   <header class="header">
+    <nav class="nav container">
+      <div class="nav__data">
+         <a href="#" class="nav__logo">
+            <img src="logo.png" class="hide" style="width: 60px; height: auto; position: relative; top: 25px; left: -60px;">
+         </a>  
+         <div class="nav__toggle" id="nav-toggle">
+            <i class="ri-menu-line nav__burger"></i>
+            <i class="ri-close-line nav__close"></i>
+         </div>
+      </div>
+
+      <!--=============== NAV MENU ===============-->
+      <div class="nav__menu" id="nav-menu">
+         <ul class="nav__list">
+            <li><a href="index.html" class="nav__link"> Home </a></li>
+
+            <!--=============== DROPDOWN 2 ===============-->
+            <li class="dropdown__item">
+               <div class="nav__link">
+                  Nos rubriques <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+               </div>
+
+               <ul class="dropdown__menu">
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class=""></i>  L'Anthropologie de la gastronomie
+
+                     </a>                          
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class=""></i> L'histoire et l'authenticité
+                     </a>
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> L'inventaire des plats
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i>  Le patrimoine culinaire
+                     </a>
+                  </li>
+                  <li>
+                     <a href="alimentation.html" class="dropdown__link">
+                        <i class="e"></i> La science de l'alimentation
+                     </a>
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> le rapport du tourisme avec la gastronomie
+                     </a>
+                  </li>
+               </ul>
+            </li>
+
+            <!--=============== DROPDOWN 1 ===============-->
+            <li class="dropdown__item">
+               <div class="nav__link">
+                  Nos recettes <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+               </div>
+
+               <ul class="dropdown__menu">
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="salees"></i> salées 
+                     </a>                          
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class=""></i> sucrées
+                     </a>
+                  </li>
+
+                  <!--=============== DROPDOWN SUBMENU ===============-->
+                  <li class="dropdown__subitem">
+                     <div class="dropdown__link">
+                        <i class="#"></i> autre <i class="ri-add-line dropdown__add"></i>
+                     </div>
+
+                     <ul class="dropdown__submenu">
+                        <li>
+                           <a href="#" class="dropdown__sublink">
+                              <i class="#"></i> Boissons et Infusions
+                           </a>
+                        </li>
+
+                        <li>
+                           <a href="epices.html" class="dropdown__sublink">
+                              <i class="epi"></i>Condiments et Épices
+                           </a>
+                        </li>
+
+                        <li>
+                           <a href="#" class="dropdown__sublink">
+                              <i class="#"></i> pâtisseries 
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </li>
+            
+            <li><a href="livres.html" class="nav__link">Livres</a></li>
+
+            <!--=============== DROPDOWN 2 ===============-->
+            <li class="dropdown__item">
+               <div class="nav__link">
+                  Articles de recherche   <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+               </div>
+
+               <ul class="dropdown__menu">
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="ri-user-line"></i> #
+                     </a>                          
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="ri-lock-line"></i> #
+                     </a>
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="ri-message-3-line"></i> #
+                     </a>
+                  </li>
+               </ul>
+            </li>
+            <!--=============== DROPDOWN 2 ===============-->
+            <li class="dropdown__item">
+               <a href="president.html" class="nav__link">
+               <div class="nav__link">
+                  Mot du Président <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+               </div>
+            </a>
+            </li>
+
+            <li><a href="contact.html" class="nav__link">Contact</a></li>
+         </ul>
+      </div>
+   </nav>
+</header>
+
+<br><br>
+
+<!-- Article Content -->
+<div class="article-content">
+    <header class="article-header">
+        <h1>La famille marocaine à table</h1>
+        <p>Par Salah CHAKOR, Directeur de l’I.T.H.T de Ouarzazate</p>
+    </header>
+
+    <section>
+        <h2 class="section-title">Introduction</h2>
+        <p class="section-content">De tous temps, le raffinement de la cuisine a été lié au degré de l’évolution économique et de la civilisation des peuples ancestraux. Après les Mésopotamiens et les Egyptiens, les Grecs et les Romains ont apporté leurs connaissances et habitudes culinaires à la cuisine française qui perdureront jusqu’au moyen âge.</p>
+        <p class="section-content">Au Maroc, la situation géographique et tous les événements qui se sont succédés durant son histoire ont provoqué l’évolution et la progression de sa culture culinaire. La cuisine régionale, celle du terroir, l’utilisation des épices et des herbes, des légumes sauvages, et d’autres produits agricoles, la cuisine juive, berbère, arabe, chrétienne, etc., ont toutes contribué à l’enrichissement de la cuisine nationale ; ce qui a aussi fait de la cuisine marocaine l’une des cuisines les plus variées et les plus renommées au monde.</p>
+    </section>
+
+    <section>
+        <h2 class="section-title">Les repas dans la famille marocaine</h2>
+        <p class="section-content">L’art culinaire est également un témoignage historique incontestable de notre mode de vie et de l’évolution de nos mœurs. Dans les familles marocaines à moyen et à grand revenu et en particulier dans celles dites DIOR EL MAKHZEN, quand on se met à table l’on présente une mosaïque de plats crus et cuits, composés de salades de viandes, de légumes et de desserts. Le poulet bildi, le lapin, le pigeon, la dinde font également partie intégrante de cette cuisine riche. De même qu’une variété de semoules ; de pâtes, de riz préparés de diverses manières est aussi présente au menu marocain. Une grande planche de pain est aussi présentée et l’on trouve le pain de blé tendre, d’orge, de maïs, cette variété de pain est préparée selon différents modes tels que : au four, au kanoun, en tagine…etc.</p>
+    </section>
+
+    <section>
+        <h2 class="section-title">Les différents repas de la journée</h2>
+        <ul>
+            <li>Le premiers repas de la journée est celui du 1er FTOUR  matinal ( 1er petit déjeuner) servi après la prière du « SOBH », ce repas consiste au service d’une soupe de semoule à base d’orge, du blé ou du maïs, lié avec le lait frais (HSOUA) et du café noir au lait.
+
+            </li>
+            <li>Le deuxième repas appelé  FTOUR TANI  ( 2éme petit déjeuner) est servis à 10h du matin surtout dans les villes anciennes telle que Marrakech, Fès, Mekhnès,…etc et dans les compagnes qui ont une stricte tradition culinaire. Cela consiste au service du thé à la menthe, du pain, l’huile d’olive et du miel ou Msemen, Baghrir, ou du beurre baldi et du miel. Les gens qui travaillent dans le commerce (épiciers, commerçants, artisans,…etc) vont dans leur  lieu du travail tôt le matin, pour revenir à 10 h prendre ce deuxième FTOUR.
+               Comme troisième repas de la journée, 
+         
+         </li>
+            <li>le déjeuner est généralement servi entre 13h et 15h et il est composé d’au moins trois plats, chez la majorité des familles, cette composition  variée selon les saisons et selon les cérémonies et elle se présente comme suit : 
+         
+               -	Variété de salades crues et cuites, des pâtes, du riz, viandes, poulet,  ou tripes  avec les légumes frais ou des légumineuses (lentille, pois chiches, …etc)  	   
+               -	Un dessert (fruits) pâtisserie
+               -	Du thé à la menthe
+               
+               A l’occasion  des grandes fêtes, des cérémonies, ou au cas où on a des 
+               Invités, les menus peuvent être riches et composés de quatre à cinq plats (salade, pastilla, poulet, viandes ou couscous, dessert) thé à la menthe.
+               Le couscous est généralement servi tous les vendredis, les poissons le samedi ou le dimanche.</li>
+            <li>Le quatrième repas est servi après la prière du AASER à 16h appelé Terdida,  surtout servi dans les villes traditionnelles et dans les campagnes, en période de la moisson, ou quand la journée est longue. Ce repas est composé du thé, café, pain divers ou Mesemen, Baghrir, avec de l’huile d’olive, du miel, du smen…etc.</li>
+            <li>Comme cinquième repas, le dîner est servi après la prière d’ALAICHA. Ce service   est le plus souvent léger, il est composé de pâtes alimentaires avec du lait ou en sauce, ou la Harira, ou encore une soupe aux légumes. Dans les familles où l’on sert seulement 3 repas ( petit déjeuner, déjeuner, dîner) le dîner est plus au moins copieux ; Il est composé d’un plat de viande et un dessert, ou d’une salade, soupe et d’un tajine maigre aux légumes.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 class="section-title">Repas de cérémonies</h2>
+        <p class="section-content">Pendant les cérémonies officielles et avant les repas un cocktail d’accueil est servi aux invités. Ce dernier est composé de jus de fruits, boissons chaudes et de pâtisserie. De même qu’avant chaque repas servi aux invités on présente du thé à la menthe et des petits fours. Ce service du thé est symbole du bon accueil chez les familles de grandes noblesse, de même que le lait et les dattes. Le thé est préparé soit  par une personne spécialisée soit par une personne âgée à laquelle on fait appel en  guise de reconnaissance et de respect. Ce service se fait d’une manière cérémoniale en respectant toute une tradition. Dans certaines familles le thé est servi avant et après le repas.</p>
+    </section>
+
+    <section>
+        <h2 class="section-title">Variétés de Pain, Couscous et Tagines</h2>
+        <ul>
+            <li>Les Pains: KHENFAR, TANOURT, MATLOUAA,KROUNE,MAHRACH...</li>
+            <li>Les Couscous: Couscous à base de blé tendre aux légumes , Semoule d’orge (IBRINE), Semoule de blé (SMIDA),...</li>
+            <li>Les Tagines: Tajine Makfoule, Tajine aux légumes...</li>
+            <li>Pain fourrés: Madfouna Filali (Rissani),Khoubz Douaz (Arfoud),-	Pain fourré à la graisse de bœuf.</li>
+            <li>La Pastilla: Pastilla au poulet,, Pastilla aux pigeons , Pastilla aux fruits de mer...</li>
+        </ul>
+    </section>
+</div>
+
+</body>
+</html>
