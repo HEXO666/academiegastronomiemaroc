@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!--=============== REMIXICONS ===============-->
+   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+   <link rel="stylesheet" href="assets/css/styles.css">
+
+   <title>Gastronomy Site</title>
+
+   <style>
+   /* General Reset */
+   body {
+     font-size: 16px; /* Default size */
+     margin-left: 0;
+     font-family: Arial, sans-serif;
+     background-color: #f9f9f9;
+     color: #333;
+   }
+   
+   .show-menu {
+     display: block;
+   }
+
+      /* Hero Section */
+      .hero {
+         background: url('') center/cover no-repeat; /* Add your hero background image URL */
+         color: white;
+         text-align: center;
+         padding: 5vw 5%; /* Make padding responsive */
+        }
+      html {
+         font-size: 70%; /* 1rem = 16px by default, will adjust based on zoom */
+      }
+
+
+      .hero__title {
+         font-size: 3rem;
+         margin-bottom: 20px;
+      }
+
+      .hero__subtitle {
+         font-size: 1.5rem;
+         margin-bottom: 30px;
+      }
+
+      .hero__button {
+         display: inline-block;
+         padding: 10px 20px;
+         background-color: #ff6f61;
+         color: white;
+         text-decoration: none;
+         border-radius: 5px;
+         font-size: 1rem;
+         transition: background-color 0.3s;
+      }
+
+      .hero__button:hover {
+         background-color: #ff4c3b;
+      }
+
+      /* Categories Section */
+      .categories {
+         padding: 60px 20px;
+         background-color: #fff;
+         text-align: center;
+      }
+
+      .section__title {
+         font-size: 2.5rem;
+         margin-bottom: 40px;
+         color: #6e4d21;
+      }
+
+      .categories__grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+         gap: 20px;
+      }
+
+      .category__card {
+         background-color: #f4f4f4;
+         border-radius: 10px;
+         overflow: hidden;
+         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+         transition: transform 0.3s;
+      }
+
+      .category__card:hover {
+         transform: translateY(-10px);
+      }
+
+      .category__image {
+         width: 100%;
+         height: 150px;
+         object-fit: cover;
+      }
+
+      .category__name {
+         padding: 15px;
+         font-size: 1.25rem;
+         font-weight: bold;
+         color: #555;
+      }
+
+      /* Recipes Section */
+      .recipes {
+         padding: 60px 20px;
+         background-color: #f9f9f9;
+      }
+
+      .recipes__grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+         gap: 20px;
+      }
+
+      .recipe__card {
+         background-color: #fff;
+         border-radius: 10px;
+         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+         overflow: hidden;
+         transition: transform 0.3s;
+      }
+
+      .recipe__card:hover {
+         transform: translateY(-10px);
+      }
+
+      .recipe__image {
+         width: 100%;
+         height: 180px;
+         object-fit: cover;
+      }
+
+      .recipe__name {
+         padding: 15px;
+         font-size: 1.5rem;
+         font-weight: bold;
+         color: #333;
+      }
+
+      .recipe__description {
+         padding: 0 15px 15px;
+         font-size: 1rem;
+         color: #666;
+      }
+
+      /* Footer */
+      .footer {
+         background-color: #333;
+         color: white;
+         text-align: center;
+         padding: 20px;
+      }
+
+      .footer__text {
+         margin: 0;
+         font-size: 1rem;
+      }
+      /* Article */
+
+   /*
+LINKS:
+Typetura docs: https://docs.typetura.com/creating-with-typetura/creating-your-own-typographic-system
+Cubic Bezier: https://cubic-bezier.com/
+Fraunces: https://fraunces.undercase.xyz/
+Google variable fonts: https://css-tricks.com/getting-the-most-out-of-variable-fonts-on-google-fonts/
+Grid system: https://gist.github.com/scottkellum/bb46ea68c23e630842ee80c37513a3e6
+*/
+
+/* Import our variable font Fraunces */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&family=Fraunces:ital,opsz,wght,SOFT,WONK@1,9..144,100..900,0..100,0..1&display=swap");
+
+/* Variables and page setup */
+
+html {
+
+
+	/* Typetura */
+	--tt-key: html;
+	--tt-max: 900;
+	--tt-ease: cubic-bezier(0, 0.78, 0.53, 1);
+
+	/* Grid */
+	--max-width: 1200px;
+	--columns: 6;
+	--gutter: 1.5rem;
+
+	/* Color */
+	--primary: #f4663a;
+	--background: #efeded;
+	--background-alt: #ffffff;
+	--text: #31355b;
+}
+@keyframes html {
+	0% {
+		font-size: 0%;
+	}
+
+	100% {
+		font-size: 125%;
+	}
+}
+* {
+	--grid: minmax(var(--gutter), 1fr)
+		repeat(
+			var(--columns),
+			minmax(
+				0,
+				calc(
+					(var(--max-width) - (var(--gutter) * (var(--columns) - 1))) /
+						var(--columns)
+				)
+			)
+		)
+		minmax(var(--gutter), 1fr);
+}
+
+/* Element styles */
+
+body {
+	margin: 0;
+}
+
+img {
+	width: 100%;
+}
+
+/* Typography */
+
+.masthead {
+	color: var(--primary);
+	mix-blend-mode: multiply;
+	text-align: center;
+	font-variation-settings: "WONK" 1, "SOFT" 30;
+	--tt-key: masthead;
+	--tt-max: 1200;
+	--tt-ease: ease-in-out;
+	margin: 0.5em 0 -0.5em;
+}
+@keyframes masthead {
+	0% {
+		font-size: 1rem;
+		margin-bottom: -0.45em;
+		font-weight: 600;
+	}
+	100% {
+		font-size: 6.5rem;
+		margin-bottom: -0.375em;
+		font-weight: 500;
+	}
+}
+
+.primary-headline {
+	--tt-key: primary-headline;
+	--tt-ease: cubic-bezier(1, 0, 1, 1);
+	--tt-max: 585;
+	line-height: 1;
+	font-variation-settings: "SOFT" 0, "WONK" 1;
+	margin: 0.5rem 0;
+}
+@keyframes primary-headline {
+	0% {
+		font-size: 1rem;
+		font-weight: 500;
+	}
+	100% {
+		font-size: 4rem;
+		font-weight: 300;
+	}
+}
+
+.meta {
+	font-style: italic;
+	margin: 0.25rem 0;
+	font-size: 0.75rem;
+}
+
+.entry-summary {
+	margin: 0.25rem 0;
+}
+
+/* Layout */
+
+.main {
+	column-gap: var(--gutter);
+	grid-template-columns: var(--grid);
+	padding: var(--gutter);
+}
+
+.entry {
+	margin-bottom: var(--gutter);
+}
+
+.entry,
+.entry-content {
+	display: flex;
+	flex-direction: column;
+}
+
+.entry-img {
+	aspect-ratio: 5 / 3;
+	object-fit: cover;
+}
+
+.entry-date {
+	order: -1;
+}
+
+/* Module overrides */
+
+.entry-lede time {
+	margin-bottom: 1rem;
+}
+
+.entry-lede time::after {
+	content: "";
+	display: block;
+	width: calc(100% + (var(--gutter) * 2));
+	height: 1px;
+	margin-left: calc(var(--gutter) * -2);
+	background: var(--primary);
+	mix-blend-mode: multiply;
+	margin-top: 0.67rem;
+}
+
+/* Breakpoints */
+
+@media (min-width: 30em) {
+	html {
+		--columns: 12;
+	}
+	.main,
+	.entry-lede {
+		padding: 0;
+		display: grid;
+	}
+.hide{
+   display: hidden;
+}
+	.entry,
+	.trending {
+		grid-column-start: 3;
+		grid-column-end: span 10;
+	}
+
+	.entry-lede {
+		column-gap: var(--gutter);
+		grid-template-columns: var(--grid);
+		grid-column-start: 1;
+		grid-column-end: span 14;
+		margin-bottom: 4rem;
+	}
+
+	.entry-lede > .entry-img {
+		aspect-ratio: auto;
+		grid-column-start: 1;
+		grid-column-end: span 10;
+	}
+
+	.entry-lede .entry-content {
+		grid-column-start: 3;
+		grid-column-end: span 11;
+		margin: -2.5rem calc(var(--gutter) * -1) 0;
+		background: var(--background-alt);
+		padding: 0.5rem var(--gutter) 1rem;
+	}
+}
+@media (min-width: 50em) {
+	html {
+		--columns: 24;
+	}
+
+	.main::before,
+	.main::after {
+		content: "";
+		display: block;
+		grid-column-start: 8;
+		grid-column-end: 26;
+		grid-row-start: 2;
+		grid-row-end: 3;
+		background: var(--background-alt);
+		margin: 0 calc(var(--gutter) * -1);
+		z-index: -1;
+	}
+	.main::after {
+		grid-column-start: 2;
+		background-color: var(--primary);
+		height: 1px;
+		mix-blend-mode: multiply;
+	}
+
+	.entry {
+		grid-column-end: span 9;
+		margin-bottom: var(--gutter);
+	}
+	.entry:nth-child(n + 2) {
+		margin-top: -2rem;
+		grid-row-start: 2;
+	}
+	.entry:nth-child(2) {
+		grid-column-start: 8;
+	}
+	.entry:nth-child(3) {
+		grid-column-start: 17;
+	}
+
+	.entry-lede {
+		column-gap: var(--gutter);
+		grid-template-columns: var(--grid);
+		grid-column-start: 1;
+		grid-column-end: span 26;
+		margin-bottom: 4rem;
+	}
+
+	.entry-lede > .entry-img {
+		aspect-ratio: auto;
+		grid-column-start: 1;
+		grid-column-end: span 13;
+	}
+
+	.entry-lede .entry-content {
+		grid-column-start: 14;
+		grid-column-end: span 12;
+		margin: 0.5rem 0;
+		padding: 4rem 0 0;
+		background: none;
+	}
+
+	.trending {
+		grid-row-start: 2;
+		grid-column-start: 2;
+		grid-column-end: span 6;
+		margin-top: var(--gutter);
+		transform: translatex(calc(var(--gutter) * -1));
+	}
+}
+
+      
+   </style>
+</head>
+<body>
+   <!--=============== HEADER ===============-->
+   <header class="header">
+    <nav class="nav container">
+      <div class="nav__data">
+         <a href="#" class="nav__logo">
+            <img src="logo.png" class="hide" style="width: 60px; height: auto; position: relative; top: 25px; left: -60px;">
+            </a>  
+         <div class="nav__toggle" id="nav-toggle">
+            <i class="ri-menu-line nav__burger"></i>
+            <i class="ri-close-line nav__close"></i>
+         </div>
+      </div>
+
+      <!--=============== NAV MENU ===============-->
+      <div class="nav__menu" id="nav-menu">
+         <ul class="nav__list">
+            <li><a href="index.html" class="nav__link"> Home </a></li>
+
+            <!--=============== DROPDOWN 2 ===============-->
+            <li class="dropdown__item">
+               <div class="nav__link">
+                  Nos rubriques <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+               </div>
+
+               <ul class="dropdown__menu">
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class=""></i>  L'Anthropologie de la gastronomie
+
+                     </a>                          
+                  </li>
+
+                  <li>
+                     <a href="Art.html" class="dropdown__link">
+                        <i class=""></i> Arts et cultures au service d'un tourisme local durable
+                     </a>
+                  </li>
+
+                  <li>
+                     <a href="familles.html" class="dropdown__link">
+                        <i class="e"></i> Les familles marocaines à table
+                     </a>
+                  </li>
+                  <li>
+                     <a href="cuisine.html" class="dropdown__link">
+                        <i class="e"></i> la cuisine de nos arriers
+                     </a>
+                  </li>
+                  <li>
+                     <a href="alimentation.html" class="dropdown__link">
+                        <i class="e"></i> La science de l'alimentation
+                     </a>
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> le rapport du tourisme avec la gastronomie
+                     </a>
+                  </li>
+                  <!-- <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> Le rôle des restaurants dans le promotion
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> Importance
+                     </a>
+                  </li> -->
+               </ul>
+            </li>
+
+            <!--=============== DROPDOWN 1 ===============-->
+            <li class="dropdown__item">
+                <div class="nav__link">
+                   Nos recettes <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+                </div>
+ 
+                <ul class="dropdown__menu">
+                   <li>
+                      <a href="epices.html" class="dropdown__link">
+                         <i class="salees"></i> Condiments et Épices
+                      </a>                          
+                   </li>
+ 
+                   <li>
+                      <a href="#" class="dropdown__link">
+                         <i class=""></i> sucrées
+                      </a>
+                   </li>
+ 
+                </ul>
+             </li>
+            
+            <li><a href="livres.html" class="nav__link">Livres</a></li>
+
+            <!--=============== DROPDOWN 2 ===============-->
+            <li class="dropdown__item">
+               <div class="nav__link">
+                  Articles de recherche   <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+               </div>
+
+               
+            </li>
+            <!--=============== DROPDOWN 2 ===============-->
+            <li class="dropdown__item">
+               <a href="president.html" class="nav__link">
+               <div class="nav__link">
+                  Mot du Président <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+               </div>
+            </a>
+
+            </li>
+
+            <li><a href="contact.html" class="nav__link">Contact</a></li>
+         </ul>
+      </div>
+   </nav>
+</header>
+<br><br>
+
+<body style="font-family: Arial, sans-serif; line-height: 1.6; background-color: #f4f4f4; color: #333; margin: 0; padding: 20px;">
+    <header style="text-align: center; background-color: #c49b63; color: #fff; padding: 15px;">
+        <h1 style="font-size: 36px; margin: 0;">Le patrimoine gastronomique marocain, levier du développement du tourisme culturel</h1>
+        <p style="font-size: 18px; margin: 5px 0;">Par Salah Chakor, Expert et Consultant en Tourisme</p>
+ 
+    </header>
+
+    <article style="background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); max-width: 900px; margin: 20px auto;">
+        <section>
+            <h2 style="font-size: 28px; color: #c49b63;">Avant propos dans deux langues : Français et Anglais</h2>
+            <p style="font-size: 18px; margin-bottom: 20px;"><em>Définition du terme : Gastronomie.</em></p>
+            <p style="font-size: 18px; margin-bottom: 20px;"><em>Gastronomie et science :</em></p>
+            <p style="font-size: 18px; margin-bottom: 20px;"><em>Y a-t-il un rapport entre l'économie et la cuisine ?</em></p>
+            
+            <p style="font-size: 18px; margin-bottom: 20px;">Il est bien évident, aujourd'hui, au moment où le gouvernement se préoccupe de l'activité touristique comme étant l'une des locomotives de son développement socioéconomique de s'intéresser à toutes les composantes des produits de cette industrie des loisirs, et notamment l'accueil, l'hébergement, la restauration dans toutes ses formes, l'animation…etc.</p>
+            
+            <p style="font-size: 18px; margin-bottom: 20px;">Et vu que l'élément nourriture occupe une place prépondérante dans la constitution de ces prestations de services aux touristes potentiels, il est alors essentiel d'accorder un grand intérêt à la gastronomie nationale, régionale, en mettant en valeurs des préparations originales à même de refléter un savoir faire ancestral, relatant la culture, la tradition, la civilisation…</p>
+        </section>
+
+        <section>
+            <h2 style="font-size: 28px; color: #c49b63;">La notion de patrimoine gastronomique marocain</h2>
+            
+            <p style="font-size: 18px; margin-bottom: 20px;">Si le Royaume du Maroc offre une mosaïque de plats riches et savoureux, ce n'est pas un pur hasard, mais bien évidemment grâce à sa situation privilégiée, à la croisée des cultures et des civilisations, depuis la haute Antiquité.</p>
+            
+            <p style="font-size: 18px; margin-bottom: 20px;">Le Maroc est gourmand de son authenticité, de ses recettes qui sont à cent pour cent le reflet de la longue histoire riche en traditions, ainsi que des particularités régionales. Le Royaume recèle des secrets gourmands profonds issus d'un savoir-faire ancestral, miroir du patrimoine du terroir. La cuisine est l'art qui témoigne du degré de civilisation dans un pays, car les habitudes alimentaires d'un peuple sont toujours intimement liées à la géographie de sa localité. Une alternance d'austérité et de majesté, de rudesse et de douceur, de mesure et de démesure qu'offrent les montagnes, les plaines, les mers, et les lacs, se retrouve dans sa cuisine marocaine, tout à la fois rustique et opulent. C'est dire que le patrimoine culinaire marocain se défini comme étant le miroir d'un passé séculaire et ancestral riche. La gastronomie marocaine et le témoin d'un brassage de cultures et civilisations qu'a vécu cette terre, reconnue comme étant un carrefour de rencontres et de vie pacifique. Enfin cette gastronomie est le fruit d'un mixage de savoirs et de savoirs faire multiples, venus de plusieurs horizons.</p>
+        </section>
+
+        <section>
+            <h2 style="font-size: 28px; color: #c49b63;">La cuisine est l'une des Composantes essentielles de l'offre touristique</h2>
+            
+            <p style="font-size: 18px; margin-bottom: 20px;">Et étant donné que l'on ne peut pas concevoir une hôtellerie, et en l'occurrence un tourisme sans une restauration, sans un hébergement, entre autres, nous considérons que le patrimoine culturel est l'une des composantes importantes et essentielles de cette industrie des loisirs. Dés lors il n'est pas concevable de s'en passer, car c'est le moyen le plus efficace pour divulguer un savoir faire des citoyens en la matière, ce qui participe à la promotion de la culturel locale ancestrale. La cuisine n'est pas seulement faire à manger, mais aussi et surtout faire appel à une culture à une cérémonie à des traditions, selon chaque région, chaque tribu. Le patrimoine marocain détient donc une grande place dans la promotion du tourisme et contribue, efficacement, s'elle est bien faite, au développement du secteur. Une bonne cuisine savoureuse, délicieuse, riche et variée, comme la marocaine, ne peut que rehausser la qualité du produit touristique. Par conséquent, il est de notre devoir tous de mieux l'enseigner, la sauvegarder …..</p>
+        </section>
+
+        <section>
+            <h2 style="font-size: 28px; color: #c49b63;">Le patrimoine gastronomique est une véritable ressource économique dans le cadre de la politique touristique que mène le pays</h2>
+            
+            <p style="font-size: 18px; margin-bottom: 20px;">Au moment où le fast food a tenté de conquérir toute la planète, par l'implantation des entreprises de la restauration rapide et à l'emporter (drive in, drogue store, des Mac Donaldl's …etc.), et où les Etats Unis ont voulu imposer cette tradition alimentaire, l'on constate aujourd'hui, que les fin Gourmets ont une nostalgie de la bonne table. Les personnes de grandes traditions culinaires veulent alors retrouver les bonnes habitudes. C'est ce qui a donné naissance à ce qu'on appelle le Slow Food, né en Italie. Le slow food prône un retour aux plaisirs de la bonne chère. Ceci induit de prendre le temps d'apprécier un bon repas, de privilégier les produits du terroir et de saison et, si l'on va au restaurant, de choisir un établissement dont le chef de cuisine ces produits avec goût et passion.</p>
+            
+            <p style="font-size: 18px; margin-bottom: 20px;">Le slow food est un véritable mouvement lancé par une association qui porte son nom et qui comporte plus de quatre-vingt mille adhérents à travers le monde. Cette association encourage les gens à se réjouir des repas servis et de mieux savourer les préparations du terroir qu'un chef artiste présente avec doigté. Cette Association mène également des actions concrètes pour sauvegarder la diversité des gastronomies régionales, seul gage de notre identité et de notre culture.</p>
+            
+            <p style="font-size: 18px; margin-bottom: 20px;">A la lumière de ces mouvements, nous confirmons la cuisine traditionnelle comme étant une vraie ressource économique, moyen important pour la création des économies de niches dans les régions de grand tourisme, là où la cuisine a fait sa renommée, telle que Fès, Marrakech, Essaouira, …..Les touristes deviennent de plus en plus amateurs de la bonne cuisine, de la cuisine du terroir, une cuisine faite bio. Notre responsabilité est alors grande dans ce sens que nous devons encourager la création d'une restauration traditionnelle raffinée dans toutes les villes cibles d'un tourisme culturel, haut et de moyenne gamme. La gastronomie nationale marocaine est, au même titre que l'artisanat, le folklore, …..le gage de notre tourisme local de niche.</p>
+        </section>
+
+        <section>
+            <h2 style="font-size: 28px; color: #c49b63;">L'offre de formation professionnelle (privée ou publique, initiale ou continue) destinée à ce secteur</h2>
+            
+            <p style="font-size: 18px; margin-bottom: 20px;">Jusqu'à aujourd'hui le volet formation destiné à ce créneau reste très insuffisant car seul un centre est chargé de dispenser ce savoir. Le Centre da Qualification Professionnelle Hôtelière et Touristique de Touarga, à Rabat forme des jeunes filles dans la cuisine traditionnelle marocaine, d'ailleurs efficace dans cette formation, mais cela reste insuffisant. Par contre dans le privé nous n'avons aucun établissement qui forme dans ce sens. Pour mener à bien ces formations et afin de sauvegarder ce patrimoine il est important de multiplier des centres et les écoles de formation, de même que la création des associations professionnelles.</p>
+            
+            <p style="font-size: 18px; margin-bottom: 20px;">Etant donné que le Maroc est un pays de grande cuisine, d'un patrimoine culinaire très varie et riche, la création d'une Académie Nationale de Gastronomie est nécessaire pour permettre la conservation et la mise en valeur de cette culture ancestrale.</p>
+            
+            <p style="font-size: 18px; margin-bottom: 20px;">Ce qui va permettre également la mise en place d'un laboratoire culinaire au niveau national favorisant le réajustement des recettes et leur équilibrage, selon les besoins des organismes, et selon les circonstances.</p>
+            
+            <p style="font-size: 18px; margin-bottom: 20px;">La collecte et la conservation des ustensiles, matériels traditionnels et des condiments et épices utilisés pour la confection des plats constituant la cuisine du terroir s'imposent également, ce qui va motiver la création d'un musée d'art culinaire dans les régions de grandes cuisines.</p>
+            
+            <p style="font-size: 18px; margin-bottom: 20px;">Ce conservatoire de la Gastronomie Nationale aura comme objectifs essentiels la revalorisation des cuisines et des produits en voie de disparition, de même que la sauvegarde et la promotion du caractère honnête et sincère des cuisines régionale et nationales. Ce qui va prévenir le fait de dénaturer cet art ou de le conduire à la médiocrité.</p>
+            
+            <p style="font-size: 18px; margin-bottom: 20px;">Une fois mise sur pied, cette Académie de Gastronomie Nationale, aura à entreprendre, comme tâche noble, une action permanente en faveur d'une cuisine de qualité élaborée à partir de produits naturels et authentiques, tant au plan gustatif que nutritif.</p>
+            
+            <p style="font-size: 18px; margin-bottom: 20px;">D'ailleurs, l'implantation du centre de qualification hôtelière et touristique, dans l'enceinte de Touarga, à Rabat exprime pleinement cette volonté d'assurer la pérennité de cette facette de la richesse culturelle marocaine. Ce centre a la tâche de participer à la sauvegarde du patrimoine civilisationnel, culturel et humain. L'art culinaire marocain traditionnel, inlassablement transmis de mère en fille, est aujourd'hui la noble mission assignée au centre de qualification de Touarga.</p>
+            
+            <p style="font-size: 18px; margin-bottom: 20px;">La préservation, la perpétuité du savoir- faire et l'authenticité de la culture marocaine, sous toutes ses formes, motivaient, à plus d'un égard, Feu Sa Majesté Hassan II, et son successeur, Sa Majesté Le Roi Mohamed VI, qui continue à en faire sa principale préoccupation, car conscient du fait que c'est le gage de notre identité nationale. L'art culinaire représente, dans tout cela, la facette la plus complète de la culture, parce qu'elle est mêlée à tous les savoirs de l'humanité, c'est un patrimoine complet, faisant appel à la science, à l'agriculture, à l'artisanat, à la médecine………</p>
+            
+            <p style="font-size: 18px; margin-bottom: 20px;">Enfin les actions, qui seront menées par l'académie de cuisine, seront des actions scientifiques capables de mettre en place une nutrition susceptible de prévenir les maladies et de permettre l'entretien de l'organisme. Ce qui fera appel à une étude conjointe, sur la dimension humaine et scientifique, de la science de l'alimentation et de l'art culinaire.</p>
+        </section>
+
+        <section>
+            <h2 style="font-size: 28px; color: #c49b63;">La Gastronomie marocaine : mosaïque de culture et d'art</h2>
+            
+            <p style="font-size: 18px; margin-bottom: 20px;">Ayant comme origine le mélange des traditions culinaires berbères, juives, arabes et même andalouses, la cuisine marocaine traditionnelle est considérée, à juste titre, comme l'une des plus savoureuses et des plus fines d'Afrique du Nord en particulier et du monde en général. Cette cuisine a également subi l'influence de différentes civilisations qui ont conquis le pays par le passé et notamment, les Phéniciens, le Romains, les Espagnoles, les Français.etc. Ce brassage de cultures et de civilisations a fait du Maroc un carrefour des rencontres et de croisement des différents savoirs d'où la richesse de sa cuisine. Les cuisines arabes et juives de ce pays ont de nombreux points communs : la dénomination des mets, la façon de préparer les recettes et surtout, l'emploi d'épices et de condiments qui aromatisent et colorent agréablement les viandes, les poissons et les légumes.</p>
+            
+            <p style="font-size: 18px; margin-bottom: 20px;">Certes, du nord au sud du pays, l'on retrouve dans les recettes les grands "classiques" tels que le tajine, la pastilla, le couscous, qui ont fait sa réputation dans le monde entier. Mais la cuisine marocaine offre aussi d'autres mets tout aussi savoureux et fins dont sont riches les régions, chacune selon sa spécialité agricole. Il existe un grands nombre d'autres plats souvent connus des seuls Marocains mais tout aussi succulents et méritent une exploration car riches en savoirs et en traditions souvent thématiques.</p>
+        </section>
+
+        <section>
+            <h2 style="font-size: 28px; color: #c49b63;">Opportunités de l'exportation de gastronomie en tant qu'art et culture</h2>
+            
+            <p style="font-size: 18px; margin-bottom: 20px;">Culture ancestrale, - mosaïque d'art, - savoir-faire, tableau d'art, témoin de civilisation…Ce savoir se transmet de mère en fille, comme il s'exporte à l'étranger, par le moyen de l'organisation des foires de festivals, et aussi par l'intermédiaire des touristes bien satisfaits qui en deviendront les ambassadeurs.</p>
+            
+            <h3 style="font-size: 22px; color: #c49b63; margin-top: 30px;">Quelques remarques :</h3>
+            
+            <ul style="font-size: 18px; margin-bottom: 20px;">
+                <li style="margin-bottom: 10px;">Cuisine délaissée, Culture orale non écrite,</li>
+                <li style="margin-bottom: 10px;">Pertes de traditions par la disparition des Dadas,</li>
+                <li style="margin-bottom: 10px;">La relève non préparée,</li>
+                <li style="margin-bottom: 10px;">Recours au fast food et aux sandwicheries,</li>
+                <li style="margin-bottom: 10px;">Pertes des habitudes de la table, des réunions familiales, des rencontres festives……..</li>
+            </ul>
+            
+            <h3 style="font-size: 22px; color: #c49b63; margin-top: 30px;">Suggestions :</h3>
+            
+            <ul style="font-size: 18px; margin-bottom: 20px;">
+                <li style="margin-bottom: 10px;">Formation des jeunes (création de nouveaux centres de formation,</li>
+                <li style="margin-bottom: 10px;">Perpétuer et développer le métier de l'art culinaire pour assurer sa pérennité et sa capitalisation,</li>
+                <li style="margin-bottom: 10px;">Création d'Associations (des cellules de veille.)</li>
+                <li style="margin-bottom: 10px;">Création d'une Académie</li>
+                <li style="margin-bottom: 10px;">Création d'un musée …</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2 style="font-size: 28px; color: #c49b63;">Conclusion</h2>
+            
+            <p style="font-size: 18px; margin-bottom: 20px;">« A notre sens, le tourisme n'est pas l'art de soutirer à l'étranger le maximum d'argent en un minimum de temps ». « C'est l'art de recevoir un hôte selon la tradition marocaine et nous veillons à ce qu'elle soit respectée, autant qu'il est possible à l'époque du tourisme de masse. » Extrait du livre « le défi du Feu SA MESTE LE ROI HASSAN II)</p>
+            
+            <p style="font-size: 18px; margin-bottom: 20px;">La cuisine est, à juste titre, un témoin d'un passé ancestral important chez les communautés marocaines.</p>
+            
+            <p style="font-size: 18px; margin-bottom: 20px;">Et puisque la gastronomie touche à tout, elle est un excellent effet de miroir des cultures de nos arrières grands parents.</p>
+            
+            <p style="font-size: 18px; margin-bottom: 20px; text-align: right;">Merci pour votre attention<br>Salah Chakor<br>www.salahchakor.com</p>
+        </section>
+    </article>
+
+    <footer class="footer">
+        <p class="footer__text">&copy; 2025 - Articles sur la Gastronomie et l'Hospitalité</p>
+    </footer>
+    
+</body>
+</html>
